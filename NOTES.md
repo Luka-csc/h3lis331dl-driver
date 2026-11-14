@@ -1,7 +1,7 @@
 # H3LIS331DL Driver notes
 
 ## Goal
-Want to get sparkfun H3LIS331Dl breakbaord driver working for basic operations
+Want to get sparkfun H3LIS331Dl breakout board driver working for basic operations
 
 ## Log 
 ### Arduino Uno + I2C 
