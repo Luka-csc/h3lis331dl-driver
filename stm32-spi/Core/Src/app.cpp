@@ -13,14 +13,22 @@ void app_main(void) {
     uint8_t data;
     HAL_StatusTypeDef check;
 
+    int32_t x_data, y_data, z_data;
+
     check = h3lis_write_reg(H3LIS_REG_CTRL_REG1, H3LIS_CTRL1_CONFIG);
     if (check != HAL_OK) fail();
 
     check = h3lis_read_reg(H3LIS_REG_CTRL_REG1, &data);
     if (check != HAL_OK) fail();
+    if (data != H3LIS_CTRL1_CONFIG) fail();
+
+    HAL_Delay(50);
 
     while(1) {
-        if (data == H3LIS_CTRL1_CONFIG) {
+        check = h3lis_read_accel_mg(&x_data, &y_data, &z_data);
+        if (check != HAL_OK) fail();
+
+        if (z_data >= 1300 && z_data <= 1800) {
             HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
             HAL_Delay(150);
         } else {

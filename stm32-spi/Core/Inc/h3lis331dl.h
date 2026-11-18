@@ -14,7 +14,13 @@ constexpr uint8_t H3LIS_PM_NORMAL = 0b001 << 5;
 constexpr uint8_t H3LIS_DR_50HZ = 0b00 << 3;
 constexpr uint8_t H3LIS_AXES_XYZ = 0b111;
 
+constexpr uint8_t H3LIS_REG_OUT_X_L = 0x28;
+constexpr uint8_t H3LIS_SPI_READ = 1 << 7;
+constexpr uint8_t H3LIS_SPI_AUTO_INC = 1 << 6;
+constexpr int32_t H3LIS_SENS_100G_MG = 49;
+
 HAL_StatusTypeDef h3lis_read_reg(uint8_t reg_addr, uint8_t *data);
 HAL_StatusTypeDef h3lis_write_reg(uint8_t reg_addr, uint8_t data);
+HAL_StatusTypeDef h3lis_read_accel_mg(int32_t *x_data, int32_t *y_data, int32_t *z_data);
 
 #endif
